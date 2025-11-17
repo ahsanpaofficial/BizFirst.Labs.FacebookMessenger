@@ -1,0 +1,17 @@
+{
+  "Meta": {
+    "VerifyToken": "your_verify_token_here",
+    "AppSecret": "your_app_secret_here",
+    "PageAccessToken": "your_page_access_token_here"
+  },
+  "WebhookStorage": {
+    "Directory": "WebhookData"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}

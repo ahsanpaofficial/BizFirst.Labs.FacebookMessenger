@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizFirstAI.Plugin.MetaMessenger - Technical Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #0084ff;
+            --secondary-color: #00c6ff;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-section .lead {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            margin: 40px 0 25px 0;
+            font-weight: 600;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+
+        .badge-custom {
+            background: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border-left: 3px solid var(--primary-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #d63384;
+            font-size: 0.9rem;
+        }
+
+        .architecture-diagram {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .flow-box {
+            background: var(--light-bg);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .arrow-down {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .table-responsive {
+            margin: 20px 0;
+        }
+
+        .table thead {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .toc {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .toc a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: all 0.2s;
+        }
+
+        .toc a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .api-endpoint {
+            background: #e7f3ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .api-method {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .method-get {
+            background: #28a745;
+            color: white;
+        }
+
+        .method-post {
+            background: #0084ff;
+            color: white;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="bi bi-messenger"></i> Meta Messenger Plugin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#architecture">Architecture</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#components">Components</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#configuration">Configuration</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1><i class="bi bi-messenger"></i> BizFirstAI.Plugin.MetaMessenger</h1>
+            <p class="lead">Enterprise-Grade Meta Messenger Integration Plugin for BizFirstAI Platform</p>
+            <div class="mt-4">
+                <span class="badge badge-custom me-2"><i class="bi bi-code-square"></i> .NET 8.0</span>
+                <span class="badge badge-custom me-2"><i class="bi bi-box"></i> Plugin Architecture</span>
+                <span class="badge badge-custom me-2"><i class="bi bi-chat-dots"></i> Messenger Platform</span>
+                <span class="badge badge-custom"><i class="bi bi-robot"></i> AI-Powered</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- Table of Contents -->
+            <div class="col-lg-3">
+                <div class="toc">
+                    <h5 class="mb-3"><i class="bi bi-list-ul"></i> Table of Contents</h5>
+                    <a href="#overview">1. Project Overview</a>
+                    <a href="#key-features">2. Key Features</a>
+                    <a href="#architecture">3. Architecture</a>
+                    <a href="#components">4. Core Components</a>
+                    <a href="#webhook">5. Webhook System</a>
+                    <a href="#messaging">6. Messaging Models</a>
+                    <a href="#api">7. Graph API Integration</a>
+                    <a href="#message-flow">8. Message Flow</a>
+                    <a href="#configuration">9. Configuration</a>
+                    <a href="#dependencies">10. Dependencies</a>
+                    <a href="#security">11. Security</a>
+                    <a href="#deployment">12. Deployment</a>
+                    <a href="#best-practices">13. Best Practices</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Overview Section -->
+                <section id="overview">
+                    <h2 class="section-title">1. Project Overview</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-info-circle"></i> About This Plugin</h5>
+                            <p>The <strong>BizFirstAI.Plugin.MetaMessenger</strong> is a sophisticated integration plugin that enables the BizFirstAI platform to communicate seamlessly with Facebook's Messenger Platform. It provides a complete implementation of webhook handling, message processing, and response generation using the Meta Graph API.</p>
+
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-gear"></i> Plugin Details</h6>
+                                    <ul>
+                                        <li><strong>Plugin ID:</strong> 3694d49c-ddc4-43ea-b019-4d3b373ad570</li>
+                                        <li><strong>Name:</strong> Meta Messenger</li>
+                                        <li><strong>Target Framework:</strong> .NET 8.0</li>
+                                        <li><strong>Platform:</strong> BizFirstAI</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-bookmark"></i> Description</h6>
+                                    <p>Messaging service that allows users to connect with others and share content through the Meta Messenger platform, integrated with AI-powered conversation handling.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box mt-3">
+                        <h6><i class="bi bi-lightbulb"></i> Purpose</h6>
+                        <p>This plugin serves as a bridge between the BizFirstAI conversational AI platform and Meta's Messenger ecosystem, enabling businesses to deploy intelligent chatbots that can handle customer interactions, process messages, and respond with rich content including templates, quick replies, and attachments.</p>
+                    </div>
+                </section>
+
+                <!-- Key Features Section -->
+                <section id="key-features">
+                    <h2 class="section-title">2. Key Features</h2>
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-webhook feature-icon"></i>
+                                    <h5>Webhook Integration</h5>
+                                    <p>Complete webhook verification and message receiving system compliant with Meta's specifications.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-chat-square-text feature-icon"></i>
+                                    <h5>Rich Messaging</h5>
+                                    <p>Support for text messages, quick replies, generic templates, coupon templates, and attachments.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-cpu feature-icon"></i>
+                                    <h5>AI-Powered</h5>
+                                    <p>Seamless integration with BizFirstAI's conversational AI engine for intelligent responses.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-arrow-repeat feature-icon"></i>
+                                    <h5>Sender Actions</h5>
+                                    <p>Support for typing indicators and message seen receipts for enhanced user experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-plug feature-icon"></i>
+                                    <h5>Graph API Client</h5>
+                                    <p>Type-safe Refit-based HTTP client for Meta Graph API interactions.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <i class="bi bi-diagram-3 feature-icon"></i>
+                                    <h5>Multi-Agent Support</h5>
+                                    <p>Agent-specific routing with conversation context management.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture Section -->
+                <section id="architecture">
+                    <h2 class="section-title">3. System Architecture</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-diagram-3"></i> High-Level Architecture
+                        </div>
+                        <div class="card-body">
+                            <div class="architecture-diagram">
+                                <div class="flow-box">Meta Messenger Platform</div>
+                                <div class="arrow-down">↓</div>
+                                <div class="flow-box">Webhook Endpoint (/messenger/webhook/{agentId})</div>
+                                <div class="arrow-down">↓</div>
+                                <div class="flow-box">WebhookController</div>
+                                <div class="arrow-down">↓</div>
+                                <div class="flow-box">MessageHandleService</div>
+                                <div class="arrow-down">↓ ↓ ↓</div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="flow-box">IConversationService</div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="flow-box">IRoutingService</div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="flow-box">IMessengerGraphAPI</div>
+                                    </div>
+                                </div>
+                                <div class="arrow-down">↓</div>
+                                <div class="flow-box">AI Response Generation</div>
+                                <div class="arrow-down">↓</div>
+                                <div class="flow-box">Send API (Meta Graph API)</div>
+                                <div class="arrow-down">↓</div>
+                                <div class="flow-box">User Receives Response</div>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-layers"></i> Architectural Layers</h6>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Layer</th>
+                                            <th>Components</th>
+                                            <th>Responsibility</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Presentation Layer</strong></td>
+                                            <td>WebhookController</td>
+                                            <td>HTTP endpoint handling, request validation, response formatting</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Service Layer</strong></td>
+                                            <td>MessageHandleService</td>
+                                            <td>Message processing, AI integration, response orchestration</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Integration Layer</strong></td>
+                                            <td>IMessengerGraphAPI</td>
+                                            <td>External API communication with Meta Graph API</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Data Layer</strong></td>
+                                            <td>Models & DTOs</td>
+                                            <td>Data structure definitions, serialization logic</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Configuration Layer</strong></td>
+                                            <td>MetaMessengerSetting</td>
+                                            <td>Plugin configuration, API credentials management</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Core Components Section -->
+                <section id="components">
+                    <h2 class="section-title">4. Core Components</h2>
+
+                    <!-- MetaMessengerPlugin -->
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-puzzle"></i> MetaMessengerPlugin.cs
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Location:</strong> <code>MetaMessengerPlugin.cs</code></p>
+                            <p><strong>Purpose:</strong> Main plugin entry point implementing IBizFirstAIPlugin interface.</p>
+
+                            <h6><i class="bi bi-code-slash"></i> Key Responsibilities</h6>
+                            <ul>
+                                <li>Plugin identification and metadata provision</li>
+                                <li>Dependency injection configuration</li>
+                                <li>Settings binding and validation</li>
+                                <li>HTTP client registration using Refit</li>
+                                <li>Service lifetime management</li>
+                            </ul>
+
+                            <div class="code-block">
+                                <strong>Plugin Registration:</strong>
+                                <pre><code>public void RegisterDI(IServiceCollection services, IConfiguration config)
+{
+    // Bind configuration
+    var settings = new MetaMessengerSetting();
+    config.Bind("MetaMessenger", settings);
+    services.AddSingleton(settings);
+
+    // Register Refit client
+    services.AddRefitClient&lt;IMessengerGraphAPI&gt;()
+        .ConfigureHttpClient((sp, c) => {
+            var setting = sp.GetRequiredService&lt;MetaMessengerSetting&gt;();
+            c.BaseAddress = new Uri($"{setting.Endpoint}");
+        });
+
+    // Register services
+    services.AddScoped&lt;MessageHandleService&gt;();
+}</code></pre>
+                            </div>
+
+                            <div class="highlight-box mt-3">
+                                <strong><i class="bi bi-info-circle"></i> Plugin Metadata:</strong>
+                                <ul class="mb-0">
+                                    <li><strong>ID:</strong> 3694d49c-ddc4-43ea-b019-4d3b373ad570</li>
+                                    <li><strong>Name:</strong> Meta Messenger</li>
+                                    <li><strong>Icon:</strong> Meta's official Messenger icon</li>
+                                    <li><strong>Reference:</strong> <a href="https://developers.facebook.com/docs/messenger-platform/overview" target="_blank">Meta Messenger Platform Documentation</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WebhookController -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <i class="bi bi-controller"></i> WebhookController.cs
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Location:</strong> <code>Controllers/WebhookController.cs</code></p>
+                            <p><strong>Purpose:</strong> REST API controller for handling Meta Messenger webhook callbacks.</p>
+
+                            <h6><i class="bi bi-list-check"></i> Endpoints</h6>
+
+                            <div class="api-endpoint">
+                                <span class="api-method method-get">GET</span>
+                                <code>/messenger/webhook/{agentId}</code>
+                                <p class="mt-2"><strong>Purpose:</strong> Webhook verification endpoint</p>
+                                <p><strong>Parameters:</strong></p>
+                                <ul>
+                                    <li><code>hub.mode</code> - Verification mode from Meta</li>
+                                    <li><code>hub.verify_token</code> - Verification token</li>
+                                    <li><code>hub.challenge</code> - Challenge string to echo back</li>
+                                    <li><code>agentId</code> - BizFirstAI agent identifier</li>
+                                </ul>
+                                <p><strong>Response:</strong> Returns the challenge string for successful verification</p>
+                            </div>
+
+                            <div class="api-endpoint">
+                                <span class="api-method method-post">POST</span>
+                                <code>/messenger/webhook/{agentId}</code>
+                                <p class="mt-2"><strong>Purpose:</strong> Receive incoming messages from Meta Messenger</p>
+                                <p><strong>Request Body:</strong> WebhookRequest JSON object</p>
+                                <p><strong>Processing:</strong></p>
+                                <ul>
+                                    <li>Deserializes webhook payload</li>
+                                    <li>Extracts sender ID and message content</li>
+                                    <li>Handles both regular messages and postback actions</li>
+                                    <li>Supports quick reply payloads</li>
+                                    <li>Delegates to MessageHandleService for processing</li>
+                                    <li>Returns success response to Meta</li>
+                                </ul>
+                            </div>
+
+                            <div class="code-block">
+                                <strong>Message Extraction Logic:</strong>
+                                <pre><code>// Handle regular messages
+if (req.Entry[0].Messaging[0].Message != null) {
+    senderId = req.Entry[0].Messaging[0].Sender.Id;
+
+    if (req.Entry[0].Messaging[0].Message.QuickReply != null) {
+        message = req.Entry[0].Messaging[0].Message.QuickReply.Payload;
+    } else {
+        message = req.Entry[0].Messaging[0].Message.Text;
+    }
+}
+// Handle postback actions
+else if (req.Entry[0].Messaging[0].Postback != null) {
+    senderId = req.Entry[0].Messaging[0].Sender.Id;
+    message = req.Entry[0].Messaging[0].Postback.Payload;
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MessageHandleService -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <i class="bi bi-gear-fill"></i> MessageHandleService.cs
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Location:</strong> <code>Services/MessageHandleService.cs</code></p>
+                            <p><strong>Purpose:</strong> Core message processing and response orchestration service.</p>
+
+                            <h6><i class="bi bi-diagram-2"></i> Processing Workflow</h6>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Step</th>
+                                            <th>Action</th>
+                                            <th>Purpose</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Send "mark_seen" action</td>
+                                            <td>Acknowledge message receipt</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Send "typing_on" action</td>
+                                            <td>Show typing indicator to user</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Create RoleDialogModel</td>
+                                            <td>Prepare message for AI processing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Set conversation context</td>
+                                            <td>Configure routing and channel metadata</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Send to AI engine</td>
+                                            <td>Generate intelligent response</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>Process rich content</td>
+                                            <td>Transform AI response to Messenger format</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>Send messages to user</td>
+                                            <td>Deliver responses via Send API</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>Send "typing_off" action</td>
+                                            <td>Clear typing indicator</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h6><i class="bi bi-palette"></i> Rich Content Support</h6>
+                            <p>The service intelligently transforms BizFirstAI rich content into Meta Messenger-compatible formats:</p>
+                            <ul>
+                                <li><strong>Text Messages:</strong> Simple text content</li>
+                                <li><strong>Generic Templates:</strong> Carousel-style product displays with images and buttons</li>
+                                <li><strong>Coupon Templates:</strong> Promotional offers and discounts</li>
+                                <li><strong>Quick Replies:</strong> Interactive button responses</li>
+                                <li><strong>Attachments:</strong> Images, files, and other media</li>
+                            </ul>
+
+                            <div class="code-block">
+                                <strong>Rich Content Transformation:</strong>
+                                <pre><code>if (msg.RichContent.Message is GenericTemplateMessage&lt;GenericElement&gt; genericTemplate) {
+    replies.Add(new AttachmentMessage {
+        Attachment = new AttachmentBody {
+            Payload = genericTemplate
+        }
+    });
+}
+else if (msg.RichContent.Message is CouponTemplateMessage couponTemplate) {
+    replies.Add(new AttachmentMessage {
+        Attachment = new AttachmentBody {
+            Payload = couponTemplate
+        }
+    });
+}
+else if (msg.RichContent.Message is QuickReplyMessage quickReplyMessage) {
+    replies.Add(quickReplyMessage);
+}</code></pre>
+                            </div>
+
+                            <div class="highlight-box mt-3">
+                                <strong><i class="bi bi-clock"></i> Rate Limiting:</strong>
+                                <p class="mb-0">The service includes a 500ms delay between consecutive messages to prevent rate limiting and ensure proper message ordering in the user interface.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Webhook Models Section -->
+                <section id="webhook">
+                    <h2 class="section-title">5. Webhook System</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-box-seam"></i> Webhook Data Models
+                        </div>
+                        <div class="card-body">
+                            <p>The webhook system uses a structured hierarchy of models to parse incoming Meta Messenger events.</p>
+
+                            <h6><i class="bi bi-diagram-3-fill"></i> Model Hierarchy</h6>
+
+                            <div class="code-block">
+                                <pre><code>WebhookRequest
+├── string Object
+└── List&lt;WebhookObject&gt; Entry
+    └── WebhookObject
+        └── List&lt;WebhookMessage&gt; Messaging
+            └── WebhookMessage
+                ├── WebhookMessageUser Sender
+                ├── WebhookMessageUser Recipient
+                ├── WebhookMessageBody Message
+                │   ├── string Text
+                │   └── QuickReply QuickReply
+                │       └── string Payload
+                ├── WebhookMessagePostback Postback
+                │   └── string Payload
+                └── long TimeStamp</code></pre>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-file-code"></i> Key Model Classes</h6>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Class</th>
+                                            <th>Location</th>
+                                            <th>Purpose</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>WebhookRequest</code></td>
+                                            <td>WebhookModels/WebhookRequest.cs</td>
+                                            <td>Root object for incoming webhook payloads</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>WebhookObject</code></td>
+                                            <td>WebhookModels/WebhookObject.cs</td>
+                                            <td>Entry-level container for messaging events</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>WebhookMessage</code></td>
+                                            <td>WebhookModels/WebhookMessage.cs</td>
+                                            <td>Individual message event with sender, recipient, and content</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>WebhookMessageBody</code></td>
+                                            <td>WebhookModels/WebhookMessageBody.cs</td>
+                                            <td>Message content including text and quick reply data</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>WebhookMessageUser</code></td>
+                                            <td>WebhookModels/WebhookMessageUser.cs</td>
+                                            <td>User identification (sender or recipient)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>WebhookMessagePostback</code></td>
+                                            <td>WebhookModels/WebhookMessagePostback.cs</td>
+                                            <td>Postback action data from button clicks</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>WebhookResponse</code></td>
+                                            <td>WebhookModels/WebhookResponse.cs</td>
+                                            <td>Acknowledgment response to Meta platform</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="highlight-box">
+                                <strong><i class="bi bi-link-45deg"></i> Reference:</strong>
+                                <p class="mb-0">Meta Messenger Webhooks Documentation: <a href="https://developers.facebook.com/docs/messenger-platform/webhooks" target="_blank">https://developers.facebook.com/docs/messenger-platform/webhooks</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Messaging Models Section -->
+                <section id="messaging">
+                    <h2 class="section-title">6. Messaging Models</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-send"></i> Outbound Message Models
+                        </div>
+                        <div class="card-body">
+                            <p>These models define the structure for sending messages to users via the Meta Send API.</p>
+
+                            <h6><i class="bi bi-list-ul"></i> Model Components</h6>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><i class="bi bi-envelope"></i> SendingMessageRequest</h6>
+                                            <p><strong>File:</strong> MessagingModels/SendingMessageRequest.cs</p>
+                                            <p><strong>Properties:</strong></p>
+                                            <ul>
+                                                <li><code>Recipient</code> - JSON string with user ID</li>
+                                                <li><code>Message</code> - JSON string with message content</li>
+                                                <li><code>AccessToken</code> - Page access token</li>
+                                                <li><code>MessagingType</code> - Default: "RESPONSE"</li>
+                                                <li><code>SenderAction</code> - Optional typing/seen indicator</li>
+                                            </ul>
+                                            <div class="code-block">
+                                                <strong>Example:</strong>
+                                                <pre><code>new SendingMessageRequest(token, recipient) {
+    Message = "{'text':'Hello, world'}",
+    MessagingType = "RESPONSE"
+}</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><i class="bi bi-reply"></i> SendingMessageResponse</h6>
+                                            <p><strong>File:</strong> MessagingModels/SendingMessageResponse.cs</p>
+                                            <p>Contains the API response after sending a message, including the recipient ID and message ID for tracking.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><i class="bi bi-paperclip"></i> AttachmentMessage</h6>
+                                            <p><strong>File:</strong> MessagingModels/AttachmentMessage.cs</p>
+                                            <p>Implements IRichMessage for sending rich content like templates.</p>
+                                            <ul>
+                                                <li><code>RichType</code> - Always "Attachment"</li>
+                                                <li><code>Text</code> - Optional text (ignored in JSON)</li>
+                                                <li><code>Attachment</code> - AttachmentBody with payload</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><i class="bi bi-file-earmark"></i> AttachmentBody</h6>
+                                            <p><strong>File:</strong> MessagingModels/AttachmentBody.cs</p>
+                                            <p>Container for attachment payload, supporting various template types including generic templates and coupon templates.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6 class="card-title"><i class="bi bi-mouse"></i> ButtonItem</h6>
+                                            <p><strong>File:</strong> MessagingModels/ButtonItem.cs</p>
+                                            <p><strong>Properties:</strong></p>
+                                            <ul>
+                                                <li><code>Type</code> - Button type (e.g., "web_url", "postback")</li>
+                                                <li><code>Title</code> - Display text</li>
+                                                <li><code>Url</code> - Target URL for web_url type</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-gear"></i> Sender Actions Enum</h6>
+                            <p>The <code>SenderActionEnum</code> provides the following actions:</p>
+                            <ul>
+                                <li><strong>MarkSeen</strong> - Display checkmark to indicate message was seen</li>
+                                <li><strong>TypingOn</strong> - Show typing indicator (3 dots animation)</li>
+                                <li><strong>TypingOff</strong> - Remove typing indicator</li>
+                            </ul>
+
+                            <div class="highlight-box">
+                                <strong><i class="bi bi-info-circle"></i> API Reference:</strong>
+                                <p class="mb-0">Meta Send API Parameters: <a href="https://developers.facebook.com/docs/messenger-platform/reference/send-api#parameters" target="_blank">https://developers.facebook.com/docs/messenger-platform/reference/send-api#parameters</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Graph API Section -->
+                <section id="api">
+                    <h2 class="section-title">7. Graph API Integration</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-cloud-arrow-up"></i> IMessengerGraphAPI
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Location:</strong> <code>GraphAPIs/IMessengerGraphAPI.cs</code></p>
+                            <p><strong>Technology:</strong> Refit - Type-safe REST client library</p>
+
+                            <h6><i class="bi bi-code-square"></i> Interface Definition</h6>
+
+                            <div class="code-block">
+                                <pre><code>public interface IMessengerGraphAPI
+{
+    /// &lt;summary&gt;
+    /// https://developers.facebook.com/docs/messenger-platform/reference/send-api
+    /// &lt;/summary&gt;
+    /// &lt;example&gt;
+    /// /v17.0/104435566084134/messages?recipient={'id':'6610279455689235'}&
+    /// messaging_type=RESPONSE&message={'text':'hello,world'}&access_token=
+    /// &lt;/example&gt;
+    [Post("/{apiVer}/{pageId}/messages")]
+    Task&lt;SendingMessageResponse&gt; SendMessage(
+        string apiVer,
+        string pageId,
+        [Query] SendingMessageRequest request
+    );
+}</code></pre>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-tools"></i> Refit Configuration</h6>
+                            <p>The API client is configured in the plugin's dependency injection setup:</p>
+
+                            <div class="code-block">
+                                <pre><code>services.AddRefitClient&lt;IMessengerGraphAPI&gt;()
+    .ConfigureHttpClient((sp, c) => {
+        var setting = sp.GetRequiredService&lt;MetaMessengerSetting&gt;();
+        c.BaseAddress = new Uri($"{setting.Endpoint}");
+    });</code></pre>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-lightning"></i> API Features</h6>
+                            <ul>
+                                <li><strong>Type Safety:</strong> Compile-time checking of API contracts</li>
+                                <li><strong>Async/Await:</strong> Full asynchronous operation support</li>
+                                <li><strong>Automatic Serialization:</strong> JSON serialization/deserialization handled by Refit</li>
+                                <li><strong>Query Parameter Binding:</strong> Complex objects automatically converted to query strings</li>
+                                <li><strong>Error Handling:</strong> ApiException with detailed error information</li>
+                            </ul>
+
+                            <div class="api-endpoint">
+                                <h6><i class="bi bi-box-arrow-up-right"></i> Send API Endpoint Structure</h6>
+                                <p><strong>Format:</strong> <code>https://graph.facebook.com/{apiVer}/{pageId}/messages</code></p>
+                                <p><strong>Example:</strong></p>
+                                <code>https://graph.facebook.com/v17.0/104435566084134/messages</code>
+                                <p class="mt-2"><strong>Query Parameters:</strong></p>
+                                <ul>
+                                    <li><code>recipient</code> - User ID in JSON format</li>
+                                    <li><code>message</code> - Message content in JSON format</li>
+                                    <li><code>messaging_type</code> - Message category (RESPONSE, UPDATE, MESSAGE_TAG)</li>
+                                    <li><code>sender_action</code> - Optional action indicator</li>
+                                    <li><code>access_token</code> - Page access token for authentication</li>
+                                </ul>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-shield-check"></i> Authentication Handler</h6>
+                            <p>The plugin includes an <code>AuthHeaderHandler</code> class (currently commented out) that can be used for adding authentication headers to requests if needed for future enhancements.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Message Flow Section -->
+                <section id="message-flow">
+                    <h2 class="section-title">8. Complete Message Flow</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-arrow-left-right"></i> End-to-End Message Processing
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-arrow-down-circle"></i> Inbound Flow (User → AI)</h6>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item">User sends message via Messenger app</li>
+                                        <li class="list-group-item">Meta platform sends webhook POST request</li>
+                                        <li class="list-group-item">WebhookController receives and validates request</li>
+                                        <li class="list-group-item">Extracts sender ID and message text/payload</li>
+                                        <li class="list-group-item">MessageHandleService sends "mark_seen" action</li>
+                                        <li class="list-group-item">MessageHandleService sends "typing_on" action</li>
+                                        <li class="list-group-item">Creates RoleDialogModel with user message</li>
+                                        <li class="list-group-item">Sets conversation ID and channel metadata</li>
+                                        <li class="list-group-item">Routes to appropriate AI agent via agentId</li>
+                                        <li class="list-group-item">IConversationService processes message</li>
+                                    </ol>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-arrow-up-circle"></i> Outbound Flow (AI → User)</h6>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item">AI engine generates response</li>
+                                        <li class="list-group-item">Response callback processes rich content</li>
+                                        <li class="list-group-item">Transforms AI messages to Messenger format</li>
+                                        <li class="list-group-item">Handles text, templates, quick replies</li>
+                                        <li class="list-group-item">Serializes messages with custom JSON options</li>
+                                        <li class="list-group-item">Iterates through reply collection</li>
+                                        <li class="list-group-item">Sends each message via Graph API</li>
+                                        <li class="list-group-item">Applies 500ms delay between messages</li>
+                                        <li class="list-group-item">Sends "typing_off" action</li>
+                                        <li class="list-group-item">User receives formatted response</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-diagram-2"></i> Sequence Diagram</h6>
+                            <div class="code-block">
+                                <pre>User                Messenger       WebhookController    MessageHandleService    ConversationService    MessengerGraphAPI
+ |                     |                    |                        |                         |                      |
+ |-- Send Message ---->|                    |                        |                         |                      |
+ |                     |-- POST Webhook --->|                        |                         |                      |
+ |                     |                    |-- Extract Message ---->|                         |                      |
+ |                     |                    |                        |-- Send MarkSeen ------->|-- POST to Meta -->   |
+ |                     |                    |                        |-- Send TypingOn ------->|-- POST to Meta -->   |
+ |                     |                    |                        |-- Process AI ---------->|                      |
+ |                     |                    |                        |                         |<-- AI Response ---|  |
+ |                     |                    |                        |<-- Rich Content --------|                      |
+ |                     |                    |                        |-- Transform Messages -->|                      |
+ |                     |                    |                        |-- Send Reply 1 -------->|-- POST to Meta -->   |
+ |                     |                    |                        |-- Send Reply 2 -------->|-- POST to Meta -->   |
+ |                     |                    |                        |-- Send TypingOff ------>|-- POST to Meta -->   |
+ |                     |<-- Receive Reply --|                        |                         |                      |
+ |<-- View Message ----|                    |                        |                         |                      |
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Configuration Section -->
+                <section id="configuration">
+                    <h2 class="section-title">9. Configuration</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-sliders"></i> MetaMessengerSetting
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Location:</strong> <code>Settings/MetaMessengerSetting.cs</code></p>
+                            <p>Configuration class for Meta Messenger integration settings.</p>
+
+                            <h6><i class="bi bi-list-check"></i> Configuration Properties</h6>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Property</th>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                            <th>Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code>Endpoint</code></td>
+                                            <td>string</td>
+                                            <td>Meta Graph API base URL</td>
+                                            <td>https://graph.facebook.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>ApiVersion</code></td>
+                                            <td>string</td>
+                                            <td>Graph API version to use</td>
+                                            <td>v17.0, v18.0, v19.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>PageId</code></td>
+                                            <td>string</td>
+                                            <td>Facebook Page ID</td>
+                                            <td>104435566084134</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>PageAccessToken</code></td>
+                                            <td>string</td>
+                                            <td>Page access token for authentication</td>
+                                            <td>[Generated from Meta Developers Portal]</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h6><i class="bi bi-file-code"></i> Configuration File Format</h6>
+                            <p>Add the following to your <code>appsettings.json</code>:</p>
+
+                            <div class="code-block">
+                                <pre><code>{
+  "MetaMessenger": {
+    "Endpoint": "https://graph.facebook.com",
+    "ApiVersion": "v17.0",
+    "PageId": "YOUR_PAGE_ID",
+    "PageAccessToken": "YOUR_PAGE_ACCESS_TOKEN"
+  }
+}</code></pre>
+                            </div>
+
+                            <div class="highlight-box mt-3">
+                                <h6><i class="bi bi-exclamation-triangle"></i> Security Best Practices</h6>
+                                <ul class="mb-0">
+                                    <li><strong>Never commit tokens to source control</strong></li>
+                                    <li>Use environment variables or secret management services</li>
+                                    <li>Rotate access tokens regularly</li>
+                                    <li>Use different tokens for development and production</li>
+                                    <li>Monitor token usage in Meta's developer console</li>
+                                    <li>Implement token validation before application startup</li>
+                                </ul>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-terminal"></i> Startup Logging</h6>
+                            <p>The plugin logs configuration on startup (with token masked):</p>
+                            <div class="code-block">
+                                <pre><code>Console.WriteLine($"Loaded MetaMessenger settings: {settings.Endpoint}/{settings.ApiVersion} {settings.PageId} {settings.PageAccessToken.SubstringMax(4)}");</code></pre>
+                            </div>
+                            <p><strong>Output example:</strong> <code>Loaded MetaMessenger settings: https://graph.facebook.com/v17.0 104435566084134 EAAx</code></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dependencies Section -->
+                <section id="dependencies">
+                    <h2 class="section-title">10. Dependencies & NuGet Packages</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-box"></i> Project Dependencies
+                        </div>
+                        <div class="card-body">
+                            <h6><i class="bi bi-cloud-download"></i> NuGet Packages</h6>
+
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Package</th>
+                                            <th>Purpose</th>
+                                            <th>Key Features</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Microsoft.AspNetCore.Mvc.Core</strong></td>
+                                            <td>ASP.NET Core MVC</td>
+                                            <td>
+                                                <ul class="mb-0">
+                                                    <li>Controller base classes</li>
+                                                    <li>Model binding</li>
+                                                    <li>Routing attributes</li>
+                                                    <li>Action results</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Refit.HttpClientFactory</strong></td>
+                                            <td>REST API Client</td>
+                                            <td>
+                                                <ul class="mb-0">
+                                                    <li>Type-safe HTTP client generation</li>
+                                                    <li>Automatic JSON serialization</li>
+                                                    <li>HttpClientFactory integration</li>
+                                                    <li>Attribute-based API definition</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h6><i class="bi bi-link"></i> Project References</h6>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Project</th>
+                                            <th>Location</th>
+                                            <th>Purpose</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>BizFirstAI.Abstraction</strong></td>
+                                            <td>..\..\Infrastructure\BizFirstAI.Abstraction</td>
+                                            <td>
+                                                <ul class="mb-0">
+                                                    <li>IBizFirstAIPlugin interface</li>
+                                                    <li>IConversationService</li>
+                                                    <li>IRoutingService</li>
+                                                    <li>IRichMessage interfaces</li>
+                                                    <li>Rich content models</li>
+                                                    <li>Agent role definitions</li>
+                                                    <li>Conversation enums</li>
+                                                    <li>JSON converters</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h6><i class="bi bi-diagram-3"></i> Global Using Statements</h6>
+                            <p>The plugin uses C# 10's global using feature (defined in <code>Using.cs</code>):</p>
+
+                            <div class="code-block">
+                                <pre><code>global using System;
+global using System.IO;
+global using System.Text.Json;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using System.Collections.Generic;
+global using System.Runtime.Serialization;
+global using System.Text.Json.Serialization;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Microsoft.Extensions.Configuration;
+global using BizFirstAI.Abstraction.Plugins;
+global using BizFirstAI.Plugin.MetaMessenger.GraphAPIs;
+global using BizFirstAI.Plugin.MetaMessenger.Settings;
+global using BizFirstAI.Abstraction.Utilities;
+global using BizFirstAI.Plugin.MetaMessenger.Services;
+global using BizFirstAI.Plugin.MetaMessenger.WebhookModels;
+global using BizFirstAI.Plugin.MetaMessenger.MessagingModels;
+global using BizFirstAI.Abstraction.Messaging;
+global using BizFirstAI.Abstraction.Conversations.Models;
+global using BizFirstAI.Abstraction.Conversations;
+global using BizFirstAI.Abstraction.Messaging.Models.RichContent.Template;
+global using BizFirstAI.Abstraction.Messaging.Enums;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Security Section -->
+                <section id="security">
+                    <h2 class="section-title">11. Security Considerations</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-shield-lock"></i> Security & Best Practices
+                        </div>
+                        <div class="card-body">
+                            <h6><i class="bi bi-exclamation-triangle-fill"></i> Current Security Status</h6>
+
+                            <div class="alert alert-warning" role="alert">
+                                <strong>⚠️ TODO:</strong> The webhook controller currently has a commented TODO for request validation:
+                                <div class="code-block mt-2">
+                                    <code>// TODO validate request<br>
+                                    // https://developers.facebook.com/docs/messenger-platform/webhooks#verification-requests</code>
+                                </div>
+                            </div>
+
+                            <h6><i class="bi bi-shield-check"></i> Recommended Security Implementations</h6>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="bi bi-key"></i> 1. Webhook Verification</h6>
+                                            <p><strong>Status:</strong> <span class="badge bg-warning">Pending</span></p>
+                                            <p>Implement X-Hub-Signature-256 validation:</p>
+                                            <ul class="small">
+                                                <li>Extract signature from request header</li>
+                                                <li>Compute HMAC-SHA256 of request body</li>
+                                                <li>Compare with provided signature</li>
+                                                <li>Reject mismatched requests</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="bi bi-lock"></i> 2. AllowAnonymous Attribute</h6>
+                                            <p><strong>Status:</strong> <span class="badge bg-info">In Use</span></p>
+                                            <p>The WebhookController uses <code>[AllowAnonymous]</code> to allow Meta platform access. This is necessary but should be combined with signature verification.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="bi bi-eye-slash"></i> 3. Token Management</h6>
+                                            <p><strong>Recommendation:</strong></p>
+                                            <ul class="small">
+                                                <li>Store PageAccessToken in secure vault</li>
+                                                <li>Use Azure Key Vault or AWS Secrets Manager</li>
+                                                <li>Never log full tokens</li>
+                                                <li>Implement token rotation policy</li>
+                                                <li>Monitor token usage patterns</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="bi bi-bug"></i> 4. Error Handling</h6>
+                                            <p><strong>Status:</strong> <span class="badge bg-success">Implemented</span></p>
+                                            <p>The controller properly catches and logs exceptions without exposing sensitive details:</p>
+                                            <ul class="small">
+                                                <li>ApiException handling</li>
+                                                <li>General exception catching</li>
+                                                <li>Secure logging practices</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="bi bi-speedometer"></i> 5. Rate Limiting</h6>
+                                            <p><strong>Recommendation:</strong></p>
+                                            <ul class="small">
+                                                <li>Implement request throttling</li>
+                                                <li>Monitor API rate limits</li>
+                                                <li>Handle 429 (Too Many Requests) responses</li>
+                                                <li>Implement exponential backoff</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h6><i class="bi bi-file-check"></i> 6. Input Validation</h6>
+                                            <p><strong>Status:</strong> <span class="badge bg-success">Partial</span></p>
+                                            <ul class="small">
+                                                <li>Model binding validation</li>
+                                                <li>Null checking for nested properties</li>
+                                                <li>AgentId validation recommended</li>
+                                                <li>Message content sanitization</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-code-slash"></i> Sample Webhook Verification Implementation</h6>
+                            <div class="code-block">
+                                <pre><code>private bool ValidateWebhookSignature(string signature, string requestBody)
+{
+    if (string.IsNullOrEmpty(signature)) return false;
+
+    var appSecret = _configuration["MetaMessenger:AppSecret"];
+    var signatureHash = signature.Replace("sha256=", "");
+
+    using var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(appSecret));
+    var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(requestBody));
+    var computedHash = BitConverter.ToString(hash).Replace("-", "").ToLower();
+
+    return signatureHash.Equals(computedHash, StringComparison.OrdinalIgnoreCase);
+}</code></pre>
+                            </div>
+
+                            <div class="highlight-box mt-3">
+                                <h6><i class="bi bi-link-45deg"></i> Security Resources</h6>
+                                <ul class="mb-0">
+                                    <li><a href="https://developers.facebook.com/docs/messenger-platform/webhooks#verification-requests" target="_blank">Meta Webhook Security Documentation</a></li>
+                                    <li><a href="https://developers.facebook.com/docs/graph-api/security" target="_blank">Graph API Security Best Practices</a></li>
+                                    <li><a href="https://owasp.org/www-project-api-security/" target="_blank">OWASP API Security Top 10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Deployment Section -->
+                <section id="deployment">
+                    <h2 class="section-title">12. Deployment Guide</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-cloud-upload"></i> Deployment & Setup
+                        </div>
+                        <div class="card-body">
+                            <h6><i class="bi bi-list-ol"></i> Prerequisites</h6>
+                            <ul>
+                                <li>.NET 8.0 SDK or later</li>
+                                <li>Facebook Business Account</li>
+                                <li>Facebook Page for your bot</li>
+                                <li>Meta Developers App configured</li>
+                                <li>Public HTTPS endpoint for webhooks</li>
+                                <li>BizFirstAI platform instance</li>
+                            </ul>
+
+                            <h6 class="mt-4"><i class="bi bi-gear-fill"></i> Setup Steps</h6>
+
+                            <div class="accordion" id="deploymentAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#step1">
+                                            Step 1: Meta Developer Setup
+                                        </button>
+                                    </h2>
+                                    <div id="step1" class="accordion-collapse collapse show" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <ol>
+                                                <li>Go to <a href="https://developers.facebook.com" target="_blank">developers.facebook.com</a></li>
+                                                <li>Create a new app or select existing app</li>
+                                                <li>Add "Messenger" product to your app</li>
+                                                <li>Generate Page Access Token for your Facebook Page</li>
+                                                <li>Note down your App Secret</li>
+                                                <li>Configure webhook callback URL: <code>https://yourdomain.com/messenger/webhook/{agentId}</code></li>
+                                                <li>Subscribe to messaging events: <code>messages</code>, <code>messaging_postbacks</code></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step2">
+                                            Step 2: Plugin Configuration
+                                        </button>
+                                    </h2>
+                                    <div id="step2" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <p>Add configuration to <code>appsettings.json</code> or environment variables:</p>
+                                            <div class="code-block">
+                                                <pre><code>{
+  "MetaMessenger": {
+    "Endpoint": "https://graph.facebook.com",
+    "ApiVersion": "v17.0",
+    "PageId": "YOUR_PAGE_ID",
+    "PageAccessToken": "YOUR_PAGE_ACCESS_TOKEN"
+  }
+}</code></pre>
+                                            </div>
+                                            <p class="mt-2"><strong>For production, use environment variables:</strong></p>
+                                            <div class="code-block">
+                                                <pre><code>MetaMessenger__Endpoint=https://graph.facebook.com
+MetaMessenger__ApiVersion=v17.0
+MetaMessenger__PageId=YOUR_PAGE_ID
+MetaMessenger__PageAccessToken=YOUR_PAGE_ACCESS_TOKEN</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step3">
+                                            Step 3: Build & Deploy
+                                        </button>
+                                    </h2>
+                                    <div id="step3" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <div class="code-block">
+                                                <pre><code># Build the plugin
+dotnet build BizFirstAI.Plugin.MetaMessenger.csproj --configuration Release
+
+# The plugin will output to the packages directory
+# Include this DLL in your BizFirstAI deployment
+
+# Ensure the plugin is discovered by BizFirstAI
+# The platform should auto-discover plugins implementing IBizFirstAIPlugin</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step4">
+                                            Step 4: Webhook Verification
+                                        </button>
+                                    </h2>
+                                    <div id="step4" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <ol>
+                                                <li>In Meta Developers Console, click "Verify Callback URL"</li>
+                                                <li>Meta will send a GET request with hub.mode, hub.verify_token, and hub.challenge</li>
+                                                <li>Your endpoint should return the challenge string</li>
+                                                <li>Upon success, webhook will be verified</li>
+                                                <li>Subscribe your page to the webhook</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step5">
+                                            Step 5: Testing
+                                        </button>
+                                    </h2>
+                                    <div id="step5" class="accordion-collapse collapse" data-bs-parent="#deploymentAccordion">
+                                        <div class="accordion-body">
+                                            <ol>
+                                                <li>Open your Facebook Page in Messenger</li>
+                                                <li>Send a test message</li>
+                                                <li>Verify webhook receives the message</li>
+                                                <li>Check BizFirstAI logs for processing</li>
+                                                <li>Confirm bot responds appropriately</li>
+                                                <li>Test rich content: buttons, quick replies, templates</li>
+                                            </ol>
+                                            <p class="mt-2"><strong>Debugging tips:</strong></p>
+                                            <ul>
+                                                <li>Check Meta's Webhooks dashboard for delivery logs</li>
+                                                <li>Monitor application logs for errors</li>
+                                                <li>Use ngrok for local testing with HTTPS</li>
+                                                <li>Test with Meta's Test Users feature</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-cloud"></i> Production Considerations</h6>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>HTTPS:</strong> Required by Meta platform</li>
+                                        <li><strong>Load Balancing:</strong> For high-traffic scenarios</li>
+                                        <li><strong>Monitoring:</strong> Application Insights, CloudWatch, etc.</li>
+                                        <li><strong>Logging:</strong> Structured logging with correlation IDs</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><strong>Health Checks:</strong> Implement endpoint monitoring</li>
+                                        <li><strong>Scalability:</strong> Horizontal scaling capability</li>
+                                        <li><strong>Disaster Recovery:</strong> Backup and restore procedures</li>
+                                        <li><strong>Compliance:</strong> GDPR, data retention policies</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Best Practices Section -->
+                <section id="best-practices">
+                    <h2 class="section-title">13. Best Practices & Recommendations</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-star"></i> Development Best Practices
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-code"></i> Code Quality</h6>
+                                    <ul>
+                                        <li>Implement comprehensive unit tests</li>
+                                        <li>Add integration tests for webhook flows</li>
+                                        <li>Use dependency injection properly</li>
+                                        <li>Follow SOLID principles</li>
+                                        <li>Document public APIs with XML comments</li>
+                                        <li>Use async/await consistently</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-shield"></i> Security</h6>
+                                    <ul>
+                                        <li>Implement webhook signature validation</li>
+                                        <li>Never log sensitive information</li>
+                                        <li>Use secure configuration storage</li>
+                                        <li>Validate all input data</li>
+                                        <li>Implement rate limiting</li>
+                                        <li>Regular security audits</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-speedometer2"></i> Performance</h6>
+                                    <ul>
+                                        <li>Use async operations for I/O</li>
+                                        <li>Implement caching where appropriate</li>
+                                        <li>Monitor API rate limits</li>
+                                        <li>Optimize JSON serialization</li>
+                                        <li>Consider message batching</li>
+                                        <li>Profile and optimize hot paths</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-chat-dots"></i> User Experience</h6>
+                                    <ul>
+                                        <li>Always send typing indicators</li>
+                                        <li>Mark messages as seen promptly</li>
+                                        <li>Keep responses concise and clear</li>
+                                        <li>Use rich content appropriately</li>
+                                        <li>Handle errors gracefully</li>
+                                        <li>Provide helpful fallback responses</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-graph-up"></i> Monitoring</h6>
+                                    <ul>
+                                        <li>Log all webhook interactions</li>
+                                        <li>Track message processing times</li>
+                                        <li>Monitor API success rates</li>
+                                        <li>Set up alerts for failures</li>
+                                        <li>Track user engagement metrics</li>
+                                        <li>Implement distributed tracing</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-arrow-clockwise"></i> Maintenance</h6>
+                                    <ul>
+                                        <li>Keep Meta API version updated</li>
+                                        <li>Monitor deprecation notices</li>
+                                        <li>Regular dependency updates</li>
+                                        <li>Document configuration changes</li>
+                                        <li>Maintain changelog</li>
+                                        <li>Version your plugin releases</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-lightbulb"></i> Future Enhancements</h6>
+                            <div class="highlight-box">
+                                <p><strong>Recommended improvements for the plugin:</strong></p>
+                                <ul class="mb-0">
+                                    <li><strong>Webhook Validation:</strong> Implement X-Hub-Signature-256 verification (currently TODO)</li>
+                                    <li><strong>Persistent Menu:</strong> Add support for persistent menu configuration</li>
+                                    <li><strong>Get Started Button:</strong> Implement welcome screen configuration</li>
+                                    <li><strong>Message Templates:</strong> Add support for media templates, receipt templates</li>
+                                    <li><strong>Handover Protocol:</strong> Support for live chat handoff</li>
+                                    <li><strong>User Profile API:</strong> Fetch user details for personalization</li>
+                                    <li><strong>Message Tags:</strong> Support for message tags for specific use cases</li>
+                                    <li><strong>Attachment Upload:</strong> Direct media upload to Meta</li>
+                                    <li><strong>Analytics Integration:</strong> Built-in analytics and reporting</li>
+                                    <li><strong>Multi-Page Support:</strong> Handle multiple Facebook Pages</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- File Structure -->
+                <section id="file-structure" class="mt-5">
+                    <h2 class="section-title">14. Complete File Structure</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-folder"></i> Project File Organization
+                        </div>
+                        <div class="card-body">
+                            <div class="code-block">
+                                <pre>BizFirstAI.Plugin.MetaMessenger/
+├── Controllers/
+│   └── WebhookController.cs                   # Webhook endpoint controller
+├── GraphAPIs/
+│   ├── AuthHeaderHandler.cs                   # HTTP authentication handler
+│   └── IMessengerGraphAPI.cs                  # Refit Graph API interface
+├── MessagingModels/
+│   ├── AttachmentBody.cs                      # Attachment payload container
+│   ├── AttachmentMessage.cs                   # Attachment message model
+│   ├── ButtonItem.cs                          # Button template item
+│   ├── SendingMessageRequest.cs               # Outbound message request
+│   └── SendingMessageResponse.cs              # Send API response
+├── Services/
+│   ├── ConditionalSerialization.cs            # JSON serialization helpers
+│   └── MessageHandleService.cs                # Core message processing
+├── Settings/
+│   └── MetaMessengerSetting.cs                # Configuration model
+├── WebhookModels/
+│   ├── WebhookMessage.cs                      # Individual message event
+│   ├── WebhookMessageBody.cs                  # Message content
+│   ├── WebhookMessagePostback.cs              # Postback action data
+│   ├── WebhookMessageUser.cs                  # User identification
+│   ├── WebhookObject.cs                       # Entry container
+│   ├── WebhookRequest.cs                      # Webhook payload root
+│   └── WebhookResponse.cs                     # Webhook acknowledgment
+├── BizFirstAI.Plugin.MetaMessenger.csproj     # Project file
+├── MetaMessengerPlugin.cs                     # Plugin entry point
+└── Using.cs                                   # Global using directives</pre>
+                            </div>
+
+                            <h6 class="mt-4"><i class="bi bi-hash"></i> File Statistics</h6>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h3 class="text-primary">20</h3>
+                                            <p class="mb-0">Total C# Files</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h3 class="text-primary">7</h3>
+                                            <p class="mb-0">Namespaces</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h3 class="text-primary">2</h3>
+                                            <p class="mb-0">NuGet Packages</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <h3 class="text-primary">1</h3>
+                                            <p class="mb-0">Project Reference</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section id="conclusion" class="mt-5 mb-5">
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="bi bi-check-circle"></i> Conclusion</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>The <strong>BizFirstAI.Plugin.MetaMessenger</strong> provides a robust, well-architected integration between the BizFirstAI conversational AI platform and Meta's Messenger ecosystem. Key highlights include:</p>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-check2-circle text-success"></i> Strengths</h6>
+                                    <ul>
+                                        <li>Clean separation of concerns</li>
+                                        <li>Type-safe API client with Refit</li>
+                                        <li>Comprehensive rich content support</li>
+                                        <li>Proper async/await implementation</li>
+                                        <li>Dependency injection throughout</li>
+                                        <li>Good error handling practices</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="bi bi-tools text-info"></i> Improvement Areas</h6>
+                                    <ul>
+                                        <li>Implement webhook signature validation</li>
+                                        <li>Add comprehensive unit tests</li>
+                                        <li>Enhanced error recovery mechanisms</li>
+                                        <li>Rate limiting implementation</li>
+                                        <li>Extended template support</li>
+                                        <li>Analytics and monitoring hooks</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info mt-4" role="alert">
+                                <strong><i class="bi bi-info-circle"></i> Documentation Version:</strong> 1.0 | <strong>Target Framework:</strong> .NET 8.0 | <strong>Meta Graph API:</strong> v17.0+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="bi bi-messenger"></i> BizFirstAI Meta Messenger Plugin</h5>
+                    <p class="text-muted">Enterprise-grade integration for intelligent conversational experiences.</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://developers.facebook.com/docs/messenger-platform" target="_blank" class="text-white-50">Meta Messenger Documentation</a></li>
+                        <li><a href="https://developers.facebook.com/docs/graph-api" target="_blank" class="text-white-50">Graph API Reference</a></li>
+                        <li><a href="https://github.com/reactiveui/refit" target="_blank" class="text-white-50">Refit Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Technologies</h6>
+                    <p class="text-muted">.NET 8.0 | ASP.NET Core | Refit | Meta Graph API | BizFirstAI Platform</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center text-muted">
+                <p>&copy; 2025 BizFirstAI Platform. Generated Documentation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
